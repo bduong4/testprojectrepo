@@ -75,6 +75,10 @@ if __name__ == '__main__':
 
     client_socket.connect((ip, port))
 
+    print(f"\n{'=' * 50}")
+    print(f"Client has connected to {ip} on port {port}.")
+    print(f"{'=' * 50}\n")
+
     num_threads = args.threads
 
     while True:
