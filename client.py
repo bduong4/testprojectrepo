@@ -20,8 +20,8 @@ def client_args():
     '''
 
     parser.add_argument("--server", type=str, required=True)
-    parser.add_argument("--port", type=int, required=True)
-    parser.add_argument("--threads", type=int, required=True)
+    parser.add_argument("--port", type=positive_int, required=True)
+    parser.add_argument("--threads", type=positive_int, required=True)
 
     args = parser.parse_args()
 
@@ -31,6 +31,12 @@ def client_args():
     print(f"Threads: {args.threads}")
 
     return args
+
+def positive_int(x):
+    x = int(x)
+    if x < 1:
+        raise argparse.ArgumentTypeError("Value must be at least 1.")
+    return x
 
 
 def test():
